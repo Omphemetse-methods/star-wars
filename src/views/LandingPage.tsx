@@ -10,7 +10,7 @@ const LandingPage = (props: any) => {
 
   return (
     <main id="main" className="h-screen max-w-screen bg-gray-900 text-white">
-      <header className="flex justify-center py-4 h-[10vh]">
+      <header className="flex justify-center py-4 h-[15vh]">
         <div className="w-full flex items-center justify-between px-4 md:w-8/12 md:flex md:justify-between md:items-center">
           <img alt="logo" className="h-10 w-20 object-cover" src={logo} />
           <section className="flex items-center space-x-2">
@@ -29,7 +29,7 @@ const LandingPage = (props: any) => {
         </div>
       </header>
 
-      <section className="hidden md:block md:flex md:flex-col md:justify-center md:h-[10vh]">
+      <section className="hidden md:block md:flex md:flex-col md:justify-center md:h-[15vh]">
         <nav className="border-t-2 w-full flex justify-center ">
           <section className="w-11/12 md:w-10/12 grid grid-cols-6">
             <BlockNav
@@ -69,7 +69,7 @@ const LandingPage = (props: any) => {
         </p>
       </section>
 
-      <section className="flex w-full h-full h-[90vh] md:h-[80vh]">
+      <section className="flex w-full h-full h-[85vh] md:h-[70vh]">
         <SlideC />
       </section>
     </main>
