@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const NoMatch = () => {
   return (
@@ -15,18 +16,9 @@ const NoMatch = () => {
             <p className="mb-5 text-base text-left text-gray-800 md:text-xl">
               You might have the wrong address, or the page may have moved.
             </p>
-            <a
-              href="#"
-              className="w-full mb-2 btn btn-lg btn-light sm:w-auto sm:mb-0"
-            >
+            <Link to="/" className="text-blue-600">
               Back to homepage
-            </a>
-            <a
-              href="#"
-              className="w-full mb-2 btn btn-lg btn-white sm:w-auto sm:mb-0"
-            >
-              Contact us
-            </a>
+            </Link>
           </div>
           <div className="hidden md:block">
             <div className="w-full h-full py-48 bg-gray-200 rounded-lg"></div>
