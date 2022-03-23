@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { HomeIcon } from "@heroicons/react/outline";
 
+import { useAuth } from "../context/AuthProvider";
+
 import { useDispatch } from "react-redux";
 import { addSearchHistoryItem } from "../redux/actions";
 
@@ -9,6 +11,8 @@ import MovieType from "../utils/types/Movie";
 import SearchHistory from "./SearchHistory";
 
 const Layout = () => {
+  const { signOut } = useAuth();
+
   let location = useLocation();
   let navigate = useNavigate();
   let dispatch = useDispatch();
@@ -115,6 +119,7 @@ const Layout = () => {
           <p className="flex flex-cols items-center justify-center h-10 w-10 rounded-full bg-purple-600 text-white">
             M
           </p>
+          <button onClick={() => signOut()}>Log out</button>
         </div>
       </header>
 

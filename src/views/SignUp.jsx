@@ -121,14 +121,14 @@ const SignUp = (props) => {
                   </div>
 
                   <p className="mt-6 text-sm text-center text-gray-400">
-                    Don&#x27;t have an account yet?{" "}
+                    Have an account yet?{" "}
                   </p>
                   <section className="flex justify-center">
                     <Link
-                      to="/sign_up"
+                      to="/sign_in"
                       className="text-blue-500 focus:outline-none focus:underline hover:underline"
                     >
-                      Sign up{" "}
+                      Sign In{" "}
                     </Link>
                   </section>
                 </Form>

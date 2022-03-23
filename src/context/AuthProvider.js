@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import * as Realm from "realm-web";
 
 import app from "../utils/realm";
 
-const AuthContext = React.createContext({
-  user: null,
-});
+const AuthContext = React.createContext();
 
 const AuthProvider = ({ children }) => {
   let navigate = useNavigate();
+  let location = useLocation();
 
   const [app, setApp] = useState(new Realm.App({ id: "tasktracker-tbrnt" }));
 
@@ -28,7 +27,7 @@ const AuthProvider = ({ children }) => {
 
       navigate("/app");
     } catch (err) {
-      setAuthError("Invalid password/email");
+      setAuthError(err.errorCode);
     } finally {
       setAuthLoading(false);
     }
@@ -41,6 +40,8 @@ const AuthProvider = ({ children }) => {
     // if another user was logged in too, they're now current user
     // otherwise, app.currentUser is null
     setCurrentUser(app.currentUser);
+
+    navigate("/");
   };
 
   // register new user
@@ -50,13 +51,19 @@ const AuthProvider = ({ children }) => {
     try {
       await app.emailPasswordAuth.registerUser({ email, password });
       signIn({ email, password });
-    } catch (e) {
-      setAuthError("Failed to register new user");
-      console.log("error", e);
+    } catch (err) {
+      setAuthError(err.errorCode);
     } finally {
       setAuthLoading(false);
     }
   };
+
+  // clear auth error on page change
+  useEffect(() => {
+    return () => {
+      setAuthError("");
+    };
+  }, [location.pathname]);
 
   return (
     <AuthContext.Provider

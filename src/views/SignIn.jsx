@@ -53,7 +53,7 @@ const SignIn = (props) => {
               <Formik
                 initialValues={{
                   email: "mac@gmailc.ocm",
-                  password: "1234",
+                  password: "123456",
                 }}
                 validationSchema={Yup.object({
                   password: Yup.string().required("Required"),
