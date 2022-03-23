@@ -2,15 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import * as Realm from "realm-web";
 
-import app from "../utils/realm";
-
 const AuthContext = React.createContext();
 
 const AuthProvider = ({ children }) => {
   let navigate = useNavigate();
   let location = useLocation();
 
-  const [app, setApp] = useState(new Realm.App({ id: "tasktracker-tbrnt" }));
+  const [app] = useState(new Realm.App({ id: "tasktracker-tbrnt" }));
 
   // wrap the Realm.App object's user state with React state
   const [currentUser, setCurrentUser] = useState(app.currentUser);

@@ -11,7 +11,7 @@ import MovieType from "../utils/types/Movie";
 import SearchHistory from "./SearchHistory";
 
 const Layout = () => {
-  const { signOut } = useAuth();
+  const { signOut, currentUser } = useAuth();
 
   let location = useLocation();
   let navigate = useNavigate();
@@ -98,7 +98,7 @@ const Layout = () => {
                             setSearch("");
 
                             // navigate to a page that display film full details
-                            navigate(`/film/${movie.title}`);
+                            navigate(`film/${movie.title}`);
                           }}
                         >
                           <p>{movie.title}</p>
@@ -115,11 +115,16 @@ const Layout = () => {
         </>
 
         {/*login in details*/}
-        <div className="flex items-center space-x-2">
-          <p className="flex flex-cols items-center justify-center h-10 w-10 rounded-full bg-purple-600 text-white">
-            M
+        <div className="flex items-center space-x-4">
+          <p className="flex flex-cols items-center justify-center h-10 w-10 rounded-full bg-purple-600 text-white uppercase">
+            {currentUser.profile.email.charAt(0)}
           </p>
-          <button onClick={() => signOut()}>Log out</button>
+          <button
+            className="hover:text-blue-600 ring-2 ring-indigo-300 px-4 py-2"
+            onClick={() => signOut()}
+          >
+            Log out
+          </button>
         </div>
       </header>
 

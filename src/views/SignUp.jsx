@@ -15,19 +15,14 @@ const SignUp = (props) => {
           className="hidden bg-cover lg:block lg:w-2/3"
           style={{
             backgroundImage:
-              "url(https://images.unsplash.com/photo-1616763355603-9755a640a287?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)",
+              "url(https://lumiere-a.akamaihd.net/v1/images/rodian-main_de29c78f.jpeg?region=0%2C0%2C1280%2C721&width=768)",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
           }}
         >
           <div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
-            <div>
-              <h2 className="text-4xl font-bold text-white">Brand</h2>
-
-              <p className="max-w-xl mt-3 text-gray-300">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. In
-                autem ipsa, nulla laboriosam dolores, repellendus perferendis
-                libero suscipit nam temporibus molestiae
-              </p>
-            </div>
+            <div></div>
           </div>
         </div>
 
@@ -35,11 +30,11 @@ const SignUp = (props) => {
           <div className="flex-1">
             <div className="text-center">
               <h2 className="text-4xl font-bold text-center text-gray-700 dark:text-white">
-                Brand
+                Star-Wars
               </h2>
 
               <p className="mt-3 text-gray-500 dark:text-gray-300">
-                Sign in to access your account
+                Sign up to access your account
               </p>
             </div>
 

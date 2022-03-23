@@ -18,7 +18,7 @@ const SearchHistoryItem = (props: SearchHistoryItemProps) => {
       <p
         className="cursor-pointer"
         onClick={() => {
-          navigate(`/film/${props.movieTitle}`);
+          navigate(`film/${props.movieTitle}`);
         }}
       >
         {props.movieTitle}

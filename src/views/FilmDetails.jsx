@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { RefreshIcon, HomeIcon } from "@heroicons/react/outline";
+import { RefreshIcon, XIcon } from "@heroicons/react/outline";
 
 import useFetch from "../utils/hooks/useFetch";
 
@@ -11,23 +11,6 @@ const FilmDetails = () => {
   const { loading, data, error } = useFetch(
     `https://swapi.dev/api/films/?search=${filmId}`
   );
-
-  const [slide, setSlide] = useState(3);
-
-  const backgrounds = [
-    "https://lumiere-a.akamaihd.net/v1/images/cad-bane-episodes-new-swcom-slide-mobile-_2_77009884.jpeg?region=0,0,1024,626&width=768",
-    "https://lumiere-a.akamaihd.net/v1/images/marchion-ro-concept-art-5450_80572382.jpeg?region=0%2C17%2C1281%2C720",
-    "https://lumiere-a.akamaihd.net/v1/images/62335c2ddbbde50001f2766b-image_75531ce1.jpeg?region=0%2C0%2C1536%2C864",
-    "https://lumiere-a.akamaihd.net/v1/images/obi-wan-kenobi-singlehero-b-mobile_31e06718.jpeg?region=0,0,640,1000",
-  ];
-
-  // slide show effect
-  /**useEffect(() => {
-    setTimeout(() => {
-      if (slide === backgrounds.length) setSlide(0);
-      else setSlide((state) => state + 1);
-    }, 5 * 1000);
-  }, [slide]);*/
 
   if (error) {
     return (
@@ -45,7 +28,7 @@ const FilmDetails = () => {
 
   if (loading) {
     return (
-      <main className="w-screen h-screen flex flex-cols items-center justify-center">
+      <main className="w-full h-full flex flex-cols items-center justify-center">
         <RefreshIcon className="w-6 h-6 animate-spin" />
       </main>
     );
@@ -55,7 +38,7 @@ const FilmDetails = () => {
     <main
       className="w-full h-full flex flex-cols items-center justify-center"
       style={{
-        backgroundImage: `url(${backgrounds[slide]})`,
+        backgroundImage: `url(https://lumiere-a.akamaihd.net/v1/images/pit-droids-main_8b5d6bda.jpeg?region=0%2C0%2C1280%2C720&width=768)`,
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
@@ -64,7 +47,12 @@ const FilmDetails = () => {
       {data && (
         <div className="w-8/12 md:w-6/12 border-2 p-4 bg-white rounded-md space-y-4">
           <section className="flex justify-end">
-            <button onClick={() => navigate("/")}>x</button>
+            <button
+              onClick={() => navigate("/app")}
+              className="text-red-500 font-bold"
+            >
+              <XIcon className="w-6 h-6" />
+            </button>
           </section>
 
           <h2 className="text-3xl font-bold text-center">
