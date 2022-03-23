@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 interface props {
   className: string;
@@ -30,7 +31,7 @@ const SlideA = () => {
       }}
     >
       <section className="absolute bottom-0 left-0 pb-40 pl-40">
-        <p className="text-5xl w-9/12 pb-6">
+        <p className="text-3xl font-medium w-9/12 pb-6 uppercase">
           9 essentials cad bane episodes to watch on Disney+
         </p>
 
@@ -46,21 +47,72 @@ const SlideA = () => {
   );
 };
 
+const SlideB = () => {
+  const background =
+    "https://lumiere-a.akamaihd.net/v1/images/pykes-new-swcom-slide-desktop-_2_b682933d.jpeg?region=0,0,2048,870&width=1920";
+
+  return (
+    <div
+      className="h-full w-full"
+      style={{
+        backgroundImage: `url(${background})`,
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+    >
+      <section className="h-full flex justify-end">
+        <div className="w-4/12 flex flex-col items-start justify-center">
+          <p className="text-5xl font-bold w-9/12 pb-6 uppercase">
+            Who are the pykes
+          </p>
+
+          <p className="pb-4 text-2xl font-medium w-6/12">
+            Explore the inner workings of one of the galaxy's most notorious
+            crime syndicates
+          </p>
+
+          <button className="btn-primary px-20 py-3 bg-green-500 hover:bg-green-600 font-bold text-2xl">
+            Read more
+          </button>
+        </div>
+      </section>
+    </div>
+  );
+};
+
 const LandingPage = (props: any) => {
+  let navigate = useNavigate();
+
   return (
     <main className="min-h-screen max-w-screen bg-gray-900 text-white">
       <header className="flex justify-center py-4 h-[10vh]">
         <div className="w-8/12 flex justify-between items-center">
-          <section>Facebook</section>
+          <section className="flex space-x-2 items-center">
+            <p>Facebook</p>
+            <p>Instagram</p>
+            <p>Twitter</p>
+            <p>Youtube</p>
+            <p className="border-r-2 border-white" />
+            <p>Kids</p>
+          </section>
 
           <section>Logo</section>
 
-          <section className="flex items-center space-x-2">Log in</section>
+          <section className="flex items-center space-x-2">
+            <button
+              className="btn-primary px-12"
+              onClick={() => navigate("sign_in")}
+            >
+              Log In
+            </button>
+            <button className="btn-primary">Sign Up</button>
+          </section>
         </div>
       </header>
 
       <section className="h-[7vh] flex flex-col justify-center">
-        <nav className="border-t-2 border-b-2 w-full flex justify-center ">
+        <nav className="border-t-2 w-full flex justify-center ">
           <section className="w-11/12 md:w-10/12 grid grid-cols-8">
             <BlockNav className="border-l-2" text="News + Blog" />
             <BlockNav className="" text="Video" />
@@ -77,7 +129,7 @@ const LandingPage = (props: any) => {
       </section>
 
       <section className="flex w-full h-[83vh]">
-        <SlideA />
+        <SlideB />
       </section>
     </main>
   );
