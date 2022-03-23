@@ -61,12 +61,9 @@ const SignIn = (props) => {
                   >
                     Password
                   </label>
-                  <a
-                    href="#"
-                    className="text-sm text-gray-400 focus:text-blue-500 hover:text-blue-500 hover:underline"
-                  >
+                  <p className="text-sm text-gray-400 focus:text-blue-500 hover:text-blue-500 hover:underline">
                     Forgot password?
-                  </a>
+                  </p>
                 </div>
 
                 <input
@@ -86,9 +83,9 @@ const SignIn = (props) => {
 
               <p className="mt-6 text-sm text-center text-gray-400">
                 Don&#x27;t have an account yet?{" "}
-                <a className="text-blue-500 focus:outline-none focus:underline hover:underline">
+                <p className="text-blue-500 focus:outline-none focus:underline hover:underline">
                   Sign up
-                </a>
+                </p>
                 .
               </p>
             </div>

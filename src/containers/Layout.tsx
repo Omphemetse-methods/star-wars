@@ -15,7 +15,6 @@ const Layout = () => {
 
   //
   const [movies, setMovies] = useState<MovieType[]>([]);
-  const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
 
   // store search values from the input field
