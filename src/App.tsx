@@ -10,6 +10,7 @@ import Dashboard from "./views/Dashboard";
 import FilmDetails from "./views/FilmDetails";
 import NoMatch from "./views/NoMatch";
 import SignIn from "./views/SignIn";
+import SignUp from "./views/SignUp";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           </Route>
 
           <Route path="/sign_in" element={<SignIn />} />
+          <Route path="/sign_up" element={<SignUp />} />
 
           <Route path="*" element={<NoMatch />} />
         </Routes>

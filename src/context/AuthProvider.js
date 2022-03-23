@@ -43,9 +43,32 @@ const AuthProvider = ({ children }) => {
     setCurrentUser(app.currentUser);
   };
 
+  // register new user
+  const registerNewUser = async ({ email, password }) => {
+    setAuthLoading(true);
+
+    try {
+      await app.emailPasswordAuth.registerUser({ email, password });
+      signIn({ email, password });
+    } catch (e) {
+      setAuthError("Failed to register new user");
+      console.log("error", e);
+    } finally {
+      setAuthLoading(false);
+    }
+  };
+
   return (
     <AuthContext.Provider
-      value={{ app, currentUser, signIn, signOut, authLoading, authError }}
+      value={{
+        app,
+        currentUser,
+        signIn,
+        signOut,
+        authLoading,
+        authError,
+        registerNewUser,
+      }}
     >
       {children}
     </AuthContext.Provider>

@@ -28,7 +28,9 @@ const LandingPage = (props: any) => {
             >
               Log In
             </button>
-            <button className="btn-primary">Sign Up</button>
+            <button className="btn-primary" onClick={() => navigate("sign_up")}>
+              Sign Up
+            </button>
           </section>
         </div>
       </header>

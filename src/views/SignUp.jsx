@@ -5,8 +5,8 @@ import * as Yup from "yup";
 
 import { useAuth } from "../context/AuthProvider";
 
-const SignIn = (props) => {
-  const { authError, authLoading, signIn } = useAuth();
+const SignUp = (props) => {
+  const { authError, authLoading, registerNewUser } = useAuth();
 
   return (
     <div className="bg-white dark:bg-gray-900">
@@ -53,16 +53,19 @@ const SignIn = (props) => {
               <Formik
                 initialValues={{
                   email: "mac@gmailc.ocm",
-                  password: "1234",
+                  password: "123456",
                 }}
                 validationSchema={Yup.object({
-                  password: Yup.string().required("Required"),
+                  password: Yup.string()
+                    .min(6, "must be greater than 6 characters")
+                    .max(128, "must ne less than 128 characters")
+                    .required("Required"),
                   email: Yup.string()
                     .email("Invalid email address")
                     .required("Required"),
                 })}
                 onSubmit={(values) => {
-                  signIn(values);
+                  registerNewUser(values);
                 }}
               >
                 <Form>
@@ -113,7 +116,7 @@ const SignIn = (props) => {
                       type="submit"
                       className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
                     >
-                      {authLoading ? "Loading ..." : "Sign in"}
+                      {authLoading ? "Loading ..." : "Sign Up"}
                     </button>
                   </div>
 
@@ -138,4 +141,4 @@ const SignIn = (props) => {
   );
 };
 
-export default SignIn;
+export default SignUp;
