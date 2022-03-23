@@ -23,7 +23,14 @@ const SlideA = () => {
           He'll take on any job at the right price
         </p>
 
-        <button className="btn-primary px-20 py-3 bg-red-500 hover:bg-red-600 font-bold text-2xl">
+        <button
+          onClick={() =>
+            window.open(
+              "https://www.starwars.com/news/9-essential-cad-bane-episodes-disney-plus"
+            )
+          }
+          className="btn-primary px-20 py-3 bg-red-500 hover:bg-red-600 font-bold text-2xl"
+        >
           Read more
         </button>
       </section>

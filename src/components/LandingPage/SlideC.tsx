@@ -24,7 +24,14 @@ const SlideC = () => {
             Its not wise to upset a Wookiee. Especially if his name is Krrsantan
           </p>
 
-          <button className="btn-primary px-20 py-3 bg-orange-500 hover:bg-orange-600 font-bold text-2xl">
+          <button
+            onClick={() =>
+              window.open(
+                "https://www.starwars.com/news/marvel-june-2022-star-wars-comics-exclusive"
+              )
+            }
+            className="btn-primary px-20 py-3 bg-orange-500 hover:bg-orange-600 font-bold text-2xl"
+          >
             Read more
           </button>
         </div>

@@ -58,7 +58,7 @@ const Layout = () => {
     <main className="max-w-screen max-h-screen h-[100vh]">
       <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-3 h-[7vh] border-b-2 border-gray-200">
         {/* home button  */}
-        <button className="" onClick={() => navigate("/")}>
+        <button className="" onClick={() => navigate("/app")}>
           <HomeIcon className="w-6 h-6 text-purple-500 hover:text-purple-600" />
         </button>
 

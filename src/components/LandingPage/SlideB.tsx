@@ -25,7 +25,12 @@ const SlideB = () => {
             crime syndicates
           </p>
 
-          <button className="btn-primary px-20 py-3 bg-green-500 hover:bg-green-600 font-bold text-2xl">
+          <button
+            onClick={() =>
+              window.open("https://www.starwars.com/news/who-are-the-pykes")
+            }
+            className="btn-primary px-20 py-3 bg-green-500 hover:bg-green-600 font-bold text-2xl"
+          >
             Read more
           </button>
         </div>
