@@ -47,8 +47,8 @@ const SignUp = (props) => {
             <div className="mt-8">
               <Formik
                 initialValues={{
-                  email: "mac@gmailc.ocm",
-                  password: "123456",
+                  email: "",
+                  password: "",
                 }}
                 validationSchema={Yup.object({
                   password: Yup.string()

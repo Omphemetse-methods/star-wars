@@ -1,42 +1,46 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { AuthProvider } from "./context/AuthProvider";
 import PrivateRoute from "./containers/PrivateRoute";
 
-import LandingPage from "./views/LandingPage";
+import ProgressIndicator from "./components/ProgressIndicator";
 
-import Layout from "./containers/Layout";
-import Dashboard from "./views/Dashboard";
-import FilmDetails from "./views/FilmDetails";
-import NoMatch from "./views/NoMatch";
-import SignIn from "./views/SignIn";
-import SignUp from "./views/SignUp";
+const LandingPage = React.lazy(() => import("./views/LandingPage"));
+
+const Layout = React.lazy(() => import("./containers/Layout"));
+const Dashboard = React.lazy(() => import("./views/Dashboard"));
+const FilmDetails = React.lazy(() => import("./views/FilmDetails"));
+const NoMatch = React.lazy(() => import("./views/NoMatch"));
+const SignIn = React.lazy(() => import("./views/SignIn"));
+const SignUp = React.lazy(() => import("./views/SignUp"));
 
 const App = () => {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
+        <Suspense fallback={<ProgressIndicator />}>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
 
-          <Route
-            path="/app"
-            element={
-              <PrivateRoute>
-                <Layout />
-              </PrivateRoute>
-            }
-          >
-            <Route index element={<Dashboard />} />
-            <Route path="film/:filmId" element={<FilmDetails />} />
-          </Route>
+            <Route
+              path="/app"
+              element={
+                <PrivateRoute>
+                  <Layout />
+                </PrivateRoute>
+              }
+            >
+              <Route index element={<Dashboard />} />
+              <Route path="film/:filmId" element={<FilmDetails />} />
+            </Route>
 
-          <Route path="/sign_in" element={<SignIn />} />
-          <Route path="/sign_up" element={<SignUp />} />
+            <Route path="/sign_in" element={<SignIn />} />
+            <Route path="/sign_up" element={<SignUp />} />
 
-          <Route path="*" element={<NoMatch />} />
-        </Routes>
+            <Route path="*" element={<NoMatch />} />
+          </Routes>
+        </Suspense>
       </AuthProvider>
     </BrowserRouter>
   );

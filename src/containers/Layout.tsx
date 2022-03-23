@@ -67,11 +67,11 @@ const Layout = () => {
           {location.pathname === "/app" ? (
             <div className="relative space-y-2">
               <input
-                className="border-2 p-2 w-[400px] md:w-[600px] lg:w-[900px] focus:outline-none"
+                className="border-2 p-2 w-[300px] md:w-[400px] focus:outline-none rounded-md focus:outline-none focus:border-purple-100"
                 placeholder="Movie name..."
                 onChange={handleInputChange}
               />
-              <section className="absolute w-full p-3 shadow-md bg-white border-2 shadow-lg rounded-md">
+              <section className="absolute w-full p-3 shadow-md bg-white border-2 border-gray-100 shadow-lg rounded-md">
                 <>
                   {loading && search !== "" ? (
                     <p>Searching for {search}</p>
@@ -101,7 +101,9 @@ const Layout = () => {
                             navigate(`film/${movie.title}`);
                           }}
                         >
-                          <p>{movie.title}</p>
+                          <p className="hover:bg-gray-200 py-2">
+                            {movie.title}
+                          </p>
                         </li>
                       ))}
                     </ul>
@@ -116,13 +118,10 @@ const Layout = () => {
 
         {/*login in details*/}
         <div className="flex items-center space-x-4">
-          <p className="flex flex-cols items-center justify-center h-10 w-10 rounded-full bg-purple-600 text-white uppercase">
+          <p className="flex flex-cols items-center justify-center h-10 w-10 rounded-full bg-purple-600 text-white uppercase ring-1 ring-indigo-200">
             {currentUser.profile.email.charAt(0)}
           </p>
-          <button
-            className="hover:text-blue-600 ring-2 ring-indigo-300 px-4 py-2"
-            onClick={() => signOut()}
-          >
+          <button className="btn-primary px-4 py-2" onClick={() => signOut()}>
             Log out
           </button>
         </div>

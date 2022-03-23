@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+
+import ClearDialog from "../components/ClearDialog";
 
 import { clearSearchHistory, removeSearchHistoryItem } from "../redux/actions";
 
@@ -33,6 +35,8 @@ const SearchHistoryItem = (props: SearchHistoryItemProps) => {
 const SearchHistory = () => {
   let dispatch = useDispatch();
 
+  const [open, setOpen] = useState(false);
+
   // get previous seach history from redux store
   const previousSearchHistory: string[] = useSelector(
     (state: any) => state.searchHistory
@@ -47,10 +51,7 @@ const SearchHistory = () => {
           {previousSearchHistory.length === 0 ? (
             <p />
           ) : (
-            <button
-              className="text-blue-600"
-              onClick={() => dispatch(clearSearchHistory())}
-            >
+            <button className="text-blue-600" onClick={() => setOpen(true)}>
               Clear all
             </button>
           )}
@@ -72,6 +73,17 @@ const SearchHistory = () => {
           </section>
         )}
       </>
+
+      <ClearDialog
+        open={open}
+        onClearSearchHistory={() => {
+          dispatch(clearSearchHistory());
+          setOpen(false);
+        }}
+        onClose={() => {
+          setOpen(false);
+        }}
+      />
     </div>
   );
 };

@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+
+import { useState, useEffect } from "react";
 
 /*
   This hook handle fetching data from a url while maintaining
@@ -16,7 +18,6 @@ const useFetch = (url: string) => {
   // response data from the API call
   const [data, setData] = useState();
   // catch error when API call fails
-  const [error, setError] = useState();
 
   useEffect(() => {
     const handleFetch = async () => {
@@ -38,7 +39,7 @@ const useFetch = (url: string) => {
   }, []);
 
   // return use fecth goodies
-  return { loading, data, error };
+  return { loading, data };
 };
 
 export default useFetch;

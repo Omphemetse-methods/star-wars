@@ -10,7 +10,7 @@ const BlockNav = (props: props) => {
       onClick={() => {
         window.open(props.url);
       }}
-      className={`${props.className} border-r-2 border-white uppercase text-white text-clip font-medium text-md flex flex-col items-center justify-center py-4 cursor-pointer`}
+      className={`${props.className} border-r-2 border-white uppercase text-white text-clip font-medium flex flex-col items-center justify-center py-4 cursor-pointer`}
     >
       {props.text}
     </p>

@@ -1,36 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { SlideA, SlideB, SlideC } from "../components/LandingPage";
+import { SlideC } from "../components/LandingPage";
 import BlockNav from "../components/BlockNav";
 import logo from "../assets/logo.png";
 
 const LandingPage = (props: any) => {
   let navigate = useNavigate();
 
-  const slides = [<SlideA />, <SlideB />, <SlideC />];
-  const [slideIndex, setSlideIndex] = useState(0);
-  const [indx, setIndx] = useState(0);
-
-  // slide show
-  useEffect(() => {
-    setTimeout(() => {
-      setSlideIndex(indx % slides.length);
-
-      setIndx((state) => state + 1);
-    }, 5 * 1000);
-
-    return () => {
-      setSlideIndex(0);
-    };
-  }, [indx]);
-
   return (
-    <main
-      id="main"
-      className="min-h-screen max-w-screen bg-gray-900 text-white"
-    >
+    <main id="main" className="h-screen max-w-screen bg-gray-900 text-white">
       <header className="flex justify-center py-4 h-[10vh]">
         <div className="w-full flex items-center justify-between px-4 md:w-8/12 md:flex md:justify-between md:items-center">
           <img alt="logo" className="h-10 w-20 object-cover" src={logo} />
@@ -50,9 +29,9 @@ const LandingPage = (props: any) => {
         </div>
       </header>
 
-      <section className="hidden md:block md:h-[7vh] md:flex md:flex-col md:justify-center">
+      <section className="hidden md:block md:flex md:flex-col md:justify-center md:h-[10vh]">
         <nav className="border-t-2 w-full flex justify-center ">
-          <section className="w-11/12 md:w-10/12 grid grid-cols-8">
+          <section className="w-11/12 md:w-10/12 grid grid-cols-6">
             <BlockNav
               className="border-l-2"
               text="News + Blog"
@@ -80,16 +59,6 @@ const LandingPage = (props: any) => {
             />
             <BlockNav
               className=""
-              text="Community"
-              url="https://www.starwars.com/community"
-            />
-            <BlockNav
-              className=""
-              text="Databank"
-              url="https://www.starwars.com/databank"
-            />
-            <BlockNav
-              className=""
               text="Disney+"
               url="https://www.starwars.com/disneyplus"
             />
@@ -100,8 +69,8 @@ const LandingPage = (props: any) => {
         </p>
       </section>
 
-      <section className="flex w-full h-[90vh]  md:h-[83vh]">
-        {slides[slideIndex]}
+      <section className="flex w-full h-full h-[90vh] md:h-[80vh]">
+        <SlideC />
       </section>
     </main>
   );
