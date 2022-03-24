@@ -116,7 +116,7 @@ const SignUp = (props) => {
                   </div>
 
                   <p className="mt-6 text-sm text-center text-gray-400">
-                    Have an account yet?{" "}
+                    Have an account?{" "}
                   </p>
                   <section className="flex justify-center">
                     <Link

@@ -48,6 +48,10 @@ const AuthProvider = ({ children }) => {
 
     try {
       await app.emailPasswordAuth.registerUser({ email, password });
+      // remove search history
+      localStorage.removeItem("search_history");
+
+      // login in user
       signIn({ email, password });
     } catch (err) {
       setAuthError(err.errorCode);
