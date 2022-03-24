@@ -1,19 +1,19 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { AuthProvider } from "./context/AuthProvider";
-import PrivateRoute from "./containers/PrivateRoute";
+import { AuthProvider } from "context/AuthProvider";
+import PrivateRoute from "containers/PrivateRoute";
 
-import ProgressIndicator from "./components/ProgressIndicator";
+import ProgressIndicator from "components/ProgressIndicator";
 
-const LandingPage = React.lazy(() => import("./views/LandingPage"));
+const LandingPage = React.lazy(() => import("views/LandingPage"));
 
-const Layout = React.lazy(() => import("./containers/Layout"));
-const Dashboard = React.lazy(() => import("./views/Dashboard"));
-const FilmDetails = React.lazy(() => import("./views/FilmDetails"));
-const NoMatch = React.lazy(() => import("./views/NoMatch"));
-const SignIn = React.lazy(() => import("./views/SignIn"));
-const SignUp = React.lazy(() => import("./views/SignUp"));
+const Layout = React.lazy(() => import("containers/Layout"));
+const Dashboard = React.lazy(() => import("views/Dashboard"));
+const FilmDetails = React.lazy(() => import("views/FilmDetails"));
+const NoMatch = React.lazy(() => import("views/NoMatch"));
+const SignIn = React.lazy(() => import("views/SignIn"));
+const SignUp = React.lazy(() => import("views/SignUp"));
 
 const App = () => {
   return (

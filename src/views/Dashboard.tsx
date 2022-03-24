@@ -1,6 +1,6 @@
 import React from "react";
 
-const Dashboard = (props: any) => {
+const Dashboard = () => {
   return (
     <main
       className="h-full w-full"

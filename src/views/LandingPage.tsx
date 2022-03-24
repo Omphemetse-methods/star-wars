@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { SlideC } from "../components/LandingPage";
-import BlockNav from "../components/BlockNav";
-import logo from "../assets/logo.png";
+import { SlideC } from "components/LandingPage";
+import BlockNav from "components/BlockNav";
+import logo from "assets/logo.png";
 
 const LandingPage = (props: any) => {
   let navigate = useNavigate();

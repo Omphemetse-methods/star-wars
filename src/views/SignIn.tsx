@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-import { useAuth } from "../context/AuthProvider";
+import { useAuth } from "context/AuthProvider";
 
-const SignIn = (props) => {
+const SignIn = () => {
   const { authError, authLoading, signIn } = useAuth();
 
   return (

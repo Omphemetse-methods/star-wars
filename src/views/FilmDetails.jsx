@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { RefreshIcon, XIcon } from "@heroicons/react/outline";
 
-import useFetch from "../utils/hooks/useFetch";
+import useFetch from "utils/hooks/useFetch";
 
 const FilmDetails = () => {
   let navigate = useNavigate();
@@ -45,7 +45,7 @@ const FilmDetails = () => {
       }}
     >
       {data && (
-        <div className="w-8/12 md:w-6/12 border-2 p-4 bg-white rounded-md space-y-4">
+        <div className="w-11/12 md:w-6/12 border-2 p-4 bg-white rounded-md space-y-4">
           <section className="flex justify-end">
             <button
               onClick={() => navigate("/app")}

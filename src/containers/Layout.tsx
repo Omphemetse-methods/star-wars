@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
-import { HomeIcon } from "@heroicons/react/outline";
+import { Menu, Transition } from "@headlessui/react";
+import { HomeIcon, LogoutIcon } from "@heroicons/react/outline";
 
-import { useAuth } from "../context/AuthProvider";
+import { useAuth } from "context/AuthProvider";
 
 import { useDispatch } from "react-redux";
-import { addSearchHistoryItem } from "../redux/actions";
+import { addSearchHistoryItem } from "redux/actions";
 
-import MovieType from "../utils/types/Movie";
+import MovieType from "utils/types/Movie";
 import SearchHistory from "./SearchHistory";
 
 const Layout = () => {
@@ -56,7 +57,7 @@ const Layout = () => {
 
   return (
     <main className="max-w-screen max-h-screen h-[100vh]">
-      <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-3 py-2 h-[10vh] border-b-2 border-gray-200">
+      <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-3 py-2 h-[8vh] border-b-2 border-gray-200">
         {/* home button  */}
         <button className="" onClick={() => navigate("/app")}>
           <HomeIcon className="w-6 h-6 text-purple-500 hover:text-purple-600" />
@@ -67,11 +68,11 @@ const Layout = () => {
           {location.pathname === "/app" ? (
             <div className="relative space-y-2">
               <input
-                className="border-2 p-2 w-[300px] md:w-[400px] focus:outline-none rounded-md focus:outline-none focus:border-purple-100"
+                className="border-2 border-gray-100 p-2 w-[200px] md:w-[400px] focus:outline-none rounded-md focus:outline-none focus:border-purple-100"
                 placeholder="Movie name..."
                 onChange={handleInputChange}
               />
-              <section className="absolute w-full p-3 shadow-md bg-white border-2 border-gray-100 shadow-lg rounded-md">
+              <section className="absolute w-full p-3 shadow-md bg-white border-2 border-gray-100 shadow-lg">
                 <>
                   {loading && search !== "" ? (
                     <p>Searching for {search}</p>
@@ -86,27 +87,35 @@ const Layout = () => {
 
                 <>
                   {loading === false && movies && search !== "" ? (
-                    <ul>
-                      {movies.map((movie) => (
-                        <li
-                          key={movie.title}
-                          className="cursor-pointer"
-                          onClick={() => {
-                            dispatch(addSearchHistoryItem(movie));
+                    <div>
+                      <ul>
+                        {movies.map((movie) => (
+                          <li
+                            key={movie.title}
+                            className="cursor-pointer"
+                            onClick={() => {
+                              dispatch(addSearchHistoryItem(movie));
 
-                            setMovies([]);
-                            setSearch("");
+                              setMovies([]);
+                              setSearch("");
 
-                            // navigate to a page that display film full details
-                            navigate(`film/${movie.title}`);
-                          }}
-                        >
-                          <p className="hover:bg-gray-200 py-2">
-                            {movie.title}
-                          </p>
-                        </li>
-                      ))}
-                    </ul>
+                              // navigate to a page that display film full details
+                              navigate(`film/${movie.title}`);
+                            }}
+                          >
+                            <p className="hover:bg-gray-200 py-2 border-b-2">
+                              {movie.title}
+                            </p>
+                          </li>
+                        ))}
+                      </ul>
+
+                      <>
+                        {movies.length === 0 && (
+                          <p className="text-center">No film found</p>
+                        )}
+                      </>
+                    </div>
                   ) : null}
                 </>
               </section>
@@ -118,16 +127,41 @@ const Layout = () => {
 
         {/*login in details*/}
         <div className="flex items-center space-x-4">
-          <p className="flex flex-cols items-center justify-center h-10 w-10 rounded-full bg-purple-600 text-white uppercase ring-1 ring-indigo-200">
-            {currentUser.profile.email.charAt(0)}
-          </p>
-          <button className="btn-primary px-4 py-2" onClick={() => signOut()}>
-            Log out
-          </button>
+          <Menu as="div" className="relative">
+            <Menu.Button>
+              <p className="flex flex-cols items-center justify-center h-10 w-10 rounded-full btn-primary text-white uppercase ring-1 ring-indigo-200 shadow-md">
+                {currentUser.profile.email.charAt(0)}
+              </p>
+            </Menu.Button>
+
+            <Transition
+              as={Fragment}
+              enter="transition ease-out duration-100"
+              enterFrom="transform opacity-0 scale-95"
+              enterTo="transform opacity-100 scale-100"
+              leave="transition ease-in duration-75"
+              leaveFrom="transform opacity-100 scale-100"
+              leaveTo="transform opacity-0 scale-95"
+            >
+              <Menu.Items className="absolute right-0 w-40 md:w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 p-3  shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                <Menu.Item>
+                  {() => (
+                    <button
+                      className="flex space-x-2 items-center hover:bg-violet-500 hover:text-white focus:outline-none w-full"
+                      onClick={() => signOut()}
+                    >
+                      <LogoutIcon className="w-4 h-4" />
+                      <p>Log out</p>
+                    </button>
+                  )}
+                </Menu.Item>
+              </Menu.Items>
+            </Transition>
+          </Menu>
         </div>
       </header>
 
-      <section className="h-full pt-[10vh]">
+      <section className="h-full pt-[8vh]">
         <Outlet />
       </section>
     </main>
